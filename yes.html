@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Music Toggle and Love Message</title>
+    <style>
+      /* Body styling */
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #ffe5e5; /* Set the background to #FFE5E5 */
+        position: relative;
+        flex-direction: column; /* Stack the content vertically */
+      }
+
+      /* Styling for the image container */
+      .container {
+        text-align: center;
+      }
+
+      /* Music toggle styling */
+      .music-toggle {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        bottom: 25%; /* Move the button 30% up from the bottom */
+      }
+
+      /* Button styling */
+      .toggle-btn {
+        width: 80px;
+        height: 30px;
+        background: linear-gradient(to right, #ead6ee, #a0f1ea);
+        border: 2px solid #000;
+        border-radius: 15px;
+        cursor: pointer;
+        position: relative;
+        transition: background 0.3s ease, border 0.3s ease, box-shadow 0.3s ease;
+        box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.8),
+          0 0 10px 2px rgba(0, 0, 0, 0.5);
+      }
+
+      /* Emoji styling */
+      .emoji {
+        position: absolute;
+        font-size: 25px;
+        transition: transform 0.3s ease;
+      }
+
+      .emoji-left {
+        left: 0;
+        top: -30px;
+      }
+
+      .emoji-right {
+        right: 0;
+        top: -30px;
+      }
+
+      .heart {
+        position: absolute;
+        font-size: 22px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      .toggle-btn:hover {
+        background: linear-gradient(to right, #ffb6c1, #ff8c00, #8a2be2);
+        border: 2px solid #fff;
+        box-shadow: 0 0 20px 5px rgba(255, 255, 255, 0.9),
+          0 0 20px 5px rgba(0, 0, 0, 0.8);
+      }
+
+      /* Instagram button styling */
+      .insta-button {
+        position: absolute;
+        bottom: 10%; /* Position above the bottom of the page */
+        width: 40px;
+        height: 40px;
+        background: linear-gradient(
+          to right,
+          #833ab4,
+          #fd1d1d,
+          #fdcb58
+        ); /* Instagram gradient */
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .insta-button img {
+        width: 20px;
+        height: 20px;
+      }
+
+      .insta-button:hover {
+        transform: scale(1.1);
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Love message and image -->
+      <img
+        src="https://iili.io/2PEgaMQ.gif"
+        alt="Love GIF"
+        style="width: 50%; max-width: 300%; margin: 0 auto; display: block"
+      />
+      <h1>Hehehehe, I knew it! Love you a lot 😘</h1>
+    </div>
+
+    <!-- Music toggle button -->
+    <div class="music-toggle">
+      <button id="music-toggle-btn" class="toggle-btn">
+        <span id="emoji-left" class="emoji emoji-left">🕺</span>
+        <span id="emoji-right" class="emoji emoji-right">💃</span>
+        <span id="heart" class="heart">❤️</span>
+      </button>
+    </div>
+
+    <!-- Instagram button -->
+    <a
+      href="https://www.instagram.com/ekrishtekishuruaat/?utm_source=ig_web_button_share_sheet"
+      target="_blank"
+      class="insta-button"
+    >
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png"
+        alt="Instagram"
+      />
+    </a>
+
+    <!-- Audio player -->
+    <audio
+      id="audio-player"
+      src="https://audio.jukehost.co.uk/NsRRGpv6A68bN9QJ0PlZWs1BSRGu1368"
+      preload="auto"
+    ></audio>
+
+    <script>
+      const toggleBtn = document.getElementById("music-toggle-btn");
+      const emojiLeft = document.getElementById("emoji-left");
+      const emojiRight = document.getElementById("emoji-right");
+      const audioPlayer = document.getElementById("audio-player");
+
+      let isPlaying = false;
+
+      // Function to toggle play/pause
+      toggleBtn.addEventListener("click", () => {
+        if (isPlaying) {
+          audioPlayer.pause();
+          emojiLeft.style.transform = "translateX(0)";
+          emojiRight.style.transform = "translateX(0)";
+          toggleBtn.style.background =
+            "linear-gradient(to right, #EAD6EE, #A0F1EA)";
+        } else {
+          audioPlayer.play();
+          emojiLeft.style.transform = "translateX(20px)";
+          emojiRight.style.transform = "translateX(-20px)";
+          toggleBtn.style.background =
+            "linear-gradient(to right, #FFB6C1, #FF8C00, #8A2BE2)";
+        }
+        isPlaying = !isPlaying;
+      });
+    </script>
+  </body>
+</html>
